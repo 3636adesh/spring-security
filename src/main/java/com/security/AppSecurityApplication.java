@@ -17,7 +17,7 @@ public class AppSecurityApplication {
 @RestController
 class HomeController {
 
-    @GetMapping("/")
+    @GetMapping
     public String home() {
         return "<h1>Security Service</h1>";
     }

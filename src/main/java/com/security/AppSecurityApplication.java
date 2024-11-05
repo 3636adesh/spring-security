@@ -1,24 +1,23 @@
 package com.security;
 
+import com.security.test.services.BankAccountService;
+import com.security.test.services.BankAccountServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 @SpringBootApplication
+@EnableMethodSecurity
 public class AppSecurityApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AppSecurityApplication.class, args);
     }
 
-}
-
-@RestController
-class HomeController {
-
-    @GetMapping
-    public String home() {
-        return "<h1>Security Service</h1>";
+    @Bean
+    BankAccountService bankAccountService() {
+        return new BankAccountServiceImpl();
     }
 }
+

@@ -1,7 +1,10 @@
 package com.security.model;
 
 
+import com.security.MaskMethodAuthorizationDeniedHandler;
 import lombok.Getter;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authorization.method.HandleAuthorizationDenied;
 
 @Getter
 public class BankAccount {
@@ -16,6 +19,12 @@ public class BankAccount {
         this.owner = owner;
         this.accountNumber = accountNumber;
         this.balance = balance;
+    }
+
+    @PreAuthorize("this.owner == authentication?.name")
+    @HandleAuthorizationDenied(handlerClass = MaskMethodAuthorizationDeniedHandler.class)
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
 }

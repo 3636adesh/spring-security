@@ -25,7 +25,6 @@ public class CustomOncePerRequest extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         Authentication authentication;
         String externalKey = request.getHeader("external-key");
         if (externalKey != null) {

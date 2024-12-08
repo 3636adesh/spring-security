@@ -4,11 +4,15 @@ package com.example.security.authentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 
 
 public class CustomAuthentication implements Authentication {
+
+    @Serial
+    private static final long serialVersionUID = 928236366786L;
 
     private final boolean authenticated;
     private final String key;
